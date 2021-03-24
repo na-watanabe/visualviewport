@@ -7,7 +7,7 @@
         right: 0px;
         top: 0px;
         bottom: 0px;
-        color: white;
+        color: red;
         text-align: center;
         padding-top: 50%;
         background-color: #777777ee;
@@ -26,6 +26,11 @@
 <script>
 function 注意文言を隠す() {
     document.getElementById('caution-overlay').style.visibility = "hidden";
+    var viewport = window.visualViewport;
+    if (viewport) {
+        viewport.removeEventListener('scroll', 注意文言を隠す);
+        viewport.removeEventListener('resize', 注意文言を隠す);
+    }
     alert('hidden');
 }
 
@@ -43,8 +48,8 @@ function モーダルを開く() {
         var offsetTop = viewport.offsetTop;
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
-        viewport.addEventListener('scroll', 注意文言を隠す, { once: true });
-        viewport.addEventListener('resize', 注意文言を隠す, { once: true });
+        viewport.addEventListener('scroll', 注意文言を隠す);
+        viewport.addEventListener('resize', 注意文言を隠す);
     }
 }
 </script>

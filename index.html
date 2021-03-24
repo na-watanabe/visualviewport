@@ -7,7 +7,7 @@
         right: 0px;
         top: 0px;
         bottom: 0px;
-        color: red;
+        color: white;
         text-align: center;
         padding-top: 50%;
         background-color: #777777ee;
@@ -17,16 +17,6 @@
     }
 </style>
 <head>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // ページを開いたら注意文言削除イベントを設定
-    var viewport = window.visualViewport;
-    if (viewport) {
-        //viewport.addEventListener('scroll', 注意文言を隠す);
-        viewport.addEventListener('resize', 注意文言を隠す);
-    }
-});
-</script>
 </head>
 <body>
     <div id="caution-overlay"><br/>画面が拡大されています<br/>指2本で画面を縮小してください<br/><br/></div>
@@ -47,7 +37,7 @@ function モーダルを開く() {
 
     // 中略
 
-    // 10%以上拡大されていたら、注意文言を表示
+    // 注意文言を表示
     var viewport = window.visualViewport;
     if (viewport) {
         var cautionOverlay = document.getElementById('caution-overlay');
@@ -55,6 +45,8 @@ function モーダルを開く() {
         var offsetTop = viewport.offsetTop;
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
+        viewport.addEventListener('scroll', 注意文言を隠す, { once: true });
+        viewport.addEventListener('resize', 注意文言を隠す, { once: true });
     }
 }
 </script>

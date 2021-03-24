@@ -49,7 +49,7 @@ function モーダルを開く() {
 
     // 10%以上拡大されていたら、注意文言を表示
     var viewport = window.visualViewport;
-    if (viewport && viewport.scale >= 1.0) {
+    if (viewport) {
         var cautionOverlay = document.getElementById('caution-overlay');
         var offsetLeft = viewport.offsetLeft;
         var offsetTop = viewport.offsetTop;

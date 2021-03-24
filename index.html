@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 <body>
     <div id="caution-overlay"><br/>画面が拡大されています<br/>指2本で画面を縮小してください<br/><br/></div>
     <button onclick="モーダルを開く()">モーダルを開く</button><br />
-    <button onclick="モーダルを閉じる()">モーダルを閉じる</button><br />
 </body>
 
 <script>
@@ -54,15 +53,6 @@ function モーダルを開く() {
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
     }
-}
-
-function モーダルを閉じる() {
-    // モーダルを閉じる処理
-    
-    // 中略
-
-    // 注意文言も消す
-    注意文言を隠す();
 }
 </script>
 </html>

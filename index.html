@@ -1,7 +1,7 @@
 <html>
 <meta name="viewport" content="width=device-width">
 <style>
-    #bottombar {
+    #caution-overlay {
         position: fixed;
         left: 0px;
         right: 0px;
@@ -24,22 +24,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (viewport) {
         viewport.addEventListener('scroll', 注意文言を隠す);
         viewport.addEventListener('resize', 注意文言を隠す);
-        注意文言を隠す();
     }
 });
 </script>
 </head>
 <body>
-    <div id="bottombar"><br/>画面が拡大されています<br/>指2本で画面を縮小してください<br/><br/></div>
+    <div id="caution-overlay"><br/>画面が拡大されています<br/>指2本で画面を縮小してください<br/><br/></div>
     <button onclick="モーダルを開く()">モーダルを開く</button><br />
     <button onclick="モーダルを閉じる()">モーダルを閉じる</button><br />
-    Scale: <span id="position">1</span><br />
 </body>
 
 <script>
 function 注意文言を隠す() {
-    document.getElementById('bottombar').style.visibility = "hidden";
-    document.getElementById('position').textContent = Math.round(window.visualViewport.scale*100)*0.01;
+    document.getElementById('caution-overlay').style.visibility = "hidden";
 }
 
 function モーダルを開く() {
@@ -51,12 +48,11 @@ function モーダルを開く() {
     // 10%以上拡大されていたら、注意文言を表示
     var viewport = window.visualViewport;
     if (viewport && viewport.scale >= 1.0) {
-        var bottomBar = document.getElementById('bottombar');
+        var cautionOverlay = document.getElementById('caution-overlay');
         var offsetLeft = viewport.offsetLeft;
-        //var offsetTop = viewport.height - screen.height + viewport.offsetTop;
         var offsetTop = viewport.offsetTop;
-        bottomBar.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
-        bottomBar.style.visibility = "visible";
+        cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
+        cautionOverlay.style.visibility = "visible";
     }
 }
 

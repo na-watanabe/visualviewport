@@ -7,7 +7,7 @@
         right: 0px;
         top: 0px;
         bottom: 0px;
-        color: white;
+        color: red;
         text-align: center;
         padding-top: 50%;
         background-color: #777777ee;
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ページを開いたら注意文言削除イベントを設定
     var viewport = window.visualViewport;
     if (viewport) {
-        //viewport.addEventListener('scroll', 注意文言を隠す);
+        viewport.addEventListener('scroll', 注意文言を隠す);
         viewport.addEventListener('resize', 注意文言を隠す);
     }
 });
@@ -35,7 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 function 注意文言を隠す() {
-    document.getElementById('caution-overlay').style.visibility = "hidden";
+    let cautionOverlay = document.getElementById('caution-overlay');
+    if (getComputedStyle(cautionOverlay).style.visibility == 'visible') {
+        cautionOverlay.style.visibility = "hidden";
+    }
 }
 
 function モーダルを開く() {

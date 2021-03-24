@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 function 注意文言を隠す() {
     let cautionOverlay = document.getElementById('caution-overlay');
-    if (getComputedStyle(cautionOverlay).style.visibility == 'visible') {
+    if (getComputedStyle(cautionOverlay).visibility == 'visible') {
         cautionOverlay.style.visibility = "hidden";
     }
 }

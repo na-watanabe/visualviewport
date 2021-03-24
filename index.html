@@ -25,10 +25,8 @@
 
 <script>
 function 注意文言を隠す() {
-    let cautionOverlay = document.getElementById('caution-overlay');
-    if (getComputedStyle(cautionOverlay).visibility == 'visible') {
-        cautionOverlay.style.visibility = "hidden";
-    }
+    document.getElementById('caution-overlay').style.visibility = "hidden";
+    alert('hidden');
 }
 
 function モーダルを開く() {

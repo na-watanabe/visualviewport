@@ -1,2 +1,3 @@
 # visualviewport
-Test VisualViewport
+
+* スマホでピンチイン・アウトで画面を拡大したときもFIX文言を出すテスト

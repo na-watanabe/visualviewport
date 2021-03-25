@@ -29,7 +29,7 @@ function 注意文言を隠す() {
     var viewport = window.visualViewport;
     if (viewport) {
         viewport.removeEventListener('scroll', 注意文言を隠す);
-        viewport.removeEventListener('resize', 注意文言を隠す);
+        //viewport.removeEventListener('resize', 注意文言を隠す);
     }
     alert('hidden');
 }
@@ -49,7 +49,7 @@ function モーダルを開く() {
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
         viewport.addEventListener('scroll', 注意文言を隠す);
-        viewport.addEventListener('resize', 注意文言を隠す);
+        //viewport.addEventListener('resize', 注意文言を隠す);
     }
 }
 </script>

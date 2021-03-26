@@ -7,7 +7,7 @@
         right: 0px;
         top: 0px;
         bottom: 0px;
-        color: white;
+        color: red;
         text-align: center;
         padding-top: 50%;
         background-color: #777777ee;
@@ -32,7 +32,9 @@ function HideOverlay() {
         viewport.removeEventListener('resize', AfterResizeEventHandler);
     }
 }
-
+function AfterScrollEventHandler() { HideOverlay(); alert('AfterScroll'); }
+function AfterResizeEventHandler() { HideOverlay(); alert('AfterResize'); }
+    
 function モーダルを開く() {
 
     // モーダルを開く処理とか
@@ -47,8 +49,8 @@ function モーダルを開く() {
         var offsetTop = viewport.offsetTop;
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
-        viewport.addEventListener('scroll', function AfterScrollEventHandler() { HideOverlay(); alert('AfterScroll'); });
-        viewport.addEventListener('resize', function AfterResizeEventHandler() { HideOverlay(); alert('AfterResize'); });
+        viewport.addEventListener('scroll', AfterScrollEventHandler);
+        viewport.addEventListener('resize', AfterResizeEventHandler);
     }
 }
 </script>

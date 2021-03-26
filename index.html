@@ -58,7 +58,7 @@ function モーダルを開く() {
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
         viewport.addEventListener('scroll', AfterScrollEventHandler);
-        viewport.addEventListener('resize', AfterResizeEvetHandler);
+        viewport.addEventListener('resize', AfterResizeEventHandler);
     }
 }
 </script>

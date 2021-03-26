@@ -47,8 +47,8 @@ function モーダルを開く() {
         var offsetTop = viewport.offsetTop;
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
-        viewport.addEventListener('scroll', function AfterScrollEventHandler() { alert('AfterScroll'); HideOverlay(); });
-        viewport.addEventListener('resize', function AfterResizeEventHandler() { alert('AfterResize'); HideOverlay(); });
+        viewport.addEventListener('scroll', function AfterScrollEventHandler() { HideOverlay(); alert('AfterScroll'); });
+        viewport.addEventListener('resize', function AfterResizeEventHandler() { HideOverlay(); alert('AfterResize'); });
     }
 }
 </script>

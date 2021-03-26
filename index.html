@@ -20,7 +20,7 @@
 </head>
 <body>
     <div id="caution-overlay"><br/>画面が拡大されています<br/>指2本で画面を縮小してください<br/><br/></div>
-    <button onclick="モーダルを開く()">モーダルを開く</button><br />
+    <button onclick="OpenModal()">モーダルを開く</button><br />
 </body>
 
 <script>
@@ -32,10 +32,11 @@ function HideOverlay() {
         viewport.removeEventListener('resize', AfterResizeEventHandler);
     }
 }
-function AfterScrollEventHandler() { HideOverlay(); alert('AfterScroll'); }
-function AfterResizeEventHandler() { HideOverlay(); alert('AfterResize'); }
+// 個別にハンドラを用意しないとSafariの挙動がおかしい
+function AfterScrollEventHandler() { HideOverlay(); }
+function AfterResizeEventHandler() { HideOverlay(); }
     
-function モーダルを開く() {
+function OpenModal() {
 
     // モーダルを開く処理とか
 

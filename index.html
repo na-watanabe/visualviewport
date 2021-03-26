@@ -24,23 +24,13 @@
 </body>
 
 <script>
-function AfterScrollEventHandler() {
+function HideOverlay() {
     document.getElementById('caution-overlay').style.visibility = "hidden";
     var viewport = window.visualViewport;
     if (viewport) {
         viewport.removeEventListener('scroll', AfterScrollEventHandler);
         viewport.removeEventListener('resize', AfterResizeEventHandler);
     }
-    alert('AfterScroll');
-}
-function AfterResizeEventHandler() {
-    document.getElementById('caution-overlay').style.visibility = "hidden";
-    var viewport = window.visualViewport;
-    if (viewport) {
-        viewport.removeEventListener('scroll', AfterScrollEventHandler);
-        viewport.removeEventListener('resize', AfterResizeEventHandler);
-    }
-    alert('AfterResize');
 }
 
 function モーダルを開く() {
@@ -57,8 +47,8 @@ function モーダルを開く() {
         var offsetTop = viewport.offsetTop;
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
-        viewport.addEventListener('scroll', AfterScrollEventHandler);
-        viewport.addEventListener('resize', AfterResizeEventHandler);
+        viewport.addEventListener('scroll', function AfterScrollEventHandler() { alert('AfterScroll'); HideOverlay(); });
+        viewport.addEventListener('resize', function AfterResizeEventHandler() { alert('AfterResize'); HideOverlay(); });
     }
 }
 </script>

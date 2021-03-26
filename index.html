@@ -7,7 +7,7 @@
         right: 0px;
         top: 0px;
         bottom: 0px;
-        color: red;
+        color: white;
         text-align: center;
         padding-top: 50%;
         background-color: #777777ee;
@@ -24,14 +24,23 @@
 </body>
 
 <script>
-function 注意文言を隠す() {
+function AfterScrollEventHandler() {
     document.getElementById('caution-overlay').style.visibility = "hidden";
     var viewport = window.visualViewport;
     if (viewport) {
-        viewport.removeEventListener('scroll', 注意文言を隠す);
-        //viewport.removeEventListener('resize', 注意文言を隠す);
+        viewport.removeEventListener('scroll', AfterScrollEventHandler);
+        viewport.removeEventListener('resize', AfterResizeEventHandler);
     }
-    alert('hidden');
+    alert('AfterScroll');
+}
+function AfterResizeEventHandler() {
+    document.getElementById('caution-overlay').style.visibility = "hidden";
+    var viewport = window.visualViewport;
+    if (viewport) {
+        viewport.removeEventListener('scroll', AfterScrollEventHandler);
+        viewport.removeEventListener('resize', AfterResizeEventHandler);
+    }
+    alert('AfterResize');
 }
 
 function モーダルを開く() {
@@ -48,8 +57,8 @@ function モーダルを開く() {
         var offsetTop = viewport.offsetTop;
         cautionOverlay.style.transform = `translate(${offsetLeft}px, ${offsetTop}px) scale(${1/viewport.scale})`;
         cautionOverlay.style.visibility = "visible";
-        viewport.addEventListener('scroll', 注意文言を隠す);
-        //viewport.addEventListener('resize', 注意文言を隠す);
+        viewport.addEventListener('scroll', AfterScrollEventHandler);
+        viewport.addEventListener('resize', AfterResizeEvetHandler);
     }
 }
 </script>
